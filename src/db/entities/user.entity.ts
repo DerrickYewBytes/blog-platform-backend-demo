@@ -1,7 +1,8 @@
-import { Column, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 import CommentEntity from './comment.entity';
 import PostEntity from './post.entity';
 
+@Entity('user')
 export default class UserEntity {
     @PrimaryGeneratedColumn()
     id: number

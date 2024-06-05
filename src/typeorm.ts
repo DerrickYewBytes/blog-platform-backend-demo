@@ -4,7 +4,7 @@ import { config as dotenvConfig } from 'dotenv';
 import { join } from "path";
 import { DataSource, DataSourceOptions } from "typeorm";
 
-dotenvConfig({ path: './src/config/.env' });
+dotenvConfig({ path: '.env' });
 
 const config: TypeOrmModuleOptions = {
     type: 'mysql',
@@ -13,8 +13,8 @@ const config: TypeOrmModuleOptions = {
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_DATABASE,
-    entities: [join(__dirname, '**/*.entity{.ts,.js}')],
-    migrations: ["src/db/migrations/*{.ts,.js}"],
+    entities: ["dist/**/*.entity.js"],
+    migrations: [join(__dirname,'db/migrations/*.migration.ts')],
     autoLoadEntities: true,
     synchronize: false,
 }
