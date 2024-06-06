@@ -1,21 +1,20 @@
 import { plainToInstance } from "class-transformer"
-import { IsDefined, IsString } from "class-validator"
+import { IsDefined, IsNumber, IsOptional, IsString } from "class-validator"
 import PostEntity from "src/db/entities/post.entity"
 import UserEntity from "src/db/entities/user.entity"
 
-export default class CreatePostDto {
-    @IsDefined()
+export default class UpdatePostDto {
+    @IsOptional()
     @IsString()
     title: string
 
-    @IsDefined()
+    @IsOptional()
     @IsString()
     content: string
 
-     toEntity(user: UserEntity): PostEntity {
+    toEntity(user: UserEntity): PostEntity {
         const post = plainToInstance(PostEntity, this)
-        post.user = user
-        return post
 
+        return post
     }
 }

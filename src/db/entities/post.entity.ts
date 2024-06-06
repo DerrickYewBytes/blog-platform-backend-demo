@@ -22,10 +22,10 @@ export default class PostEntity {
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     createdAt: Date
 
-    @Column({ type: "timestamp", default: () => "ON UPDATE CURRENT_TIMESTAMP" })
+    @Column({ type: "timestamp", onUpdate: 'current_timestamp()', default: () => "ON UPDATE CURRENT_TIMESTAMP" })
     updatedAt: Date
 
-    @ManyToOne(() => UserEntity, user => user.posts)
+    @ManyToOne(() => UserEntity, user => user.posts, { nullable: false })
     @JoinColumn({ name: "user" })
     user: UserEntity
 
