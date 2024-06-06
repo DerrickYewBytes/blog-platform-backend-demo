@@ -16,7 +16,7 @@ export class PostController {
 
     @Get(':id')
     getOnePost(@Param('id') id: number, @User() user: UserEntity) {
-        const result = this.PostService.findOnePost(id);
+        const result = this.PostService.findOnePostWithComments(id);
         return result
     }
 

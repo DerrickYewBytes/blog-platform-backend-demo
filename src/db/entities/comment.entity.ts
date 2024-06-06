@@ -13,6 +13,9 @@ export default class CommentEntity {
     })
     comment: string
 
+    @Column({ type: 'int', nullable: false, default: 1 })
+    order: number
+
     @Column({ type: "timestamp", default: () => "CURRENT_TIMESTAMP" })
     createdAt: Date
 

@@ -13,10 +13,11 @@ export default class CreateCommentDto {
     @IsString()
     comment: string
 
-    toEntity(user: UserEntity, post: PostEntity): CommentEntity {
+    toEntity(user: UserEntity, post: PostEntity, order: number): CommentEntity {
         const comment = plainToInstance(CommentEntity, this);
         comment.user = user;
         comment.post = post;
+        comment.order = order;
         return comment;
     }
 }

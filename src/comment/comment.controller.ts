@@ -29,7 +29,7 @@ export class CommentController {
 
     @Delete(':id')
     deleteComment(@Param('id') id: number, @User() user: UserEntity) {
-        const result = this.commentService.deleteComment(id, user);
+        const result = this.commentService.deleteOneComment(id, user);
         return result
     }
 }
