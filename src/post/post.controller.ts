@@ -14,9 +14,15 @@ export class PostController {
         private PostService: PostService
     ) { }
 
-    @Get(':id')
+    @Get('getOne/:id')
     getOnePost(@Param('id') id: number, @User() user: UserEntity) {
-        const result = this.PostService.findOnePostWithComments(id);
+        const result = this.PostService.findOnePostAndComments(id);
+        return result
+    }
+
+    @Get('all')
+    getAllPosts(@User() user: UserEntity) {
+        const result = this.PostService.findAllPostsAndComments();
         return result
     }
 

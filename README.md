@@ -6,8 +6,8 @@ This project is to create a simple blog backend. It's feature includes post, com
 This project is build using Nestjs and Nodejs, uses MySQL for database, TypeORM, JWT for user authentication
 
 ## Installation
-
-1. ```bash
+1. 
+```bash
 $ npm install
 ```
 
@@ -32,7 +32,6 @@ $ npm run start
 4. Now you should be able to access all other APIs.
 5. Create a post and take note of it's id in your db viewer.
 6. Create a comment and change the post_id to the post's id that you have just created to create a comment under the post.
-
 
 
 Ref(migration)

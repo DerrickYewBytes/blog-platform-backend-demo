@@ -16,7 +16,7 @@ export class CommentService {
     ) { }
 
     async createComment(dto: CreateCommentDto, user: UserEntity) {
-        const post = await this.PostService.findOnePostWithComments(dto.post_id);
+        const post = await this.PostService.findOnePostAndComments(dto.post_id);
         const last_comment_order = post.comments.length > 0 ? post.comments[post.comments.length - 1].order : 0;
         const order = last_comment_order + 1;
         const dao = dto.toEntity(user, post, order);

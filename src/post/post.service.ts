@@ -22,7 +22,7 @@ export class PostService {
         return post
     }
 
-    async findOnePostWithComments(id: number) {
+    async findOnePostAndComments(id: number) {
         const post = await this.PostRepository.createQueryBuilder('post')
             .leftJoinAndSelect('post.user', 'user')
             .leftJoinAndSelect('post.comments', 'com')
@@ -34,6 +34,18 @@ export class PostService {
             throw new NotAcceptableException('Post not found');
         }
         return post
+    }
+
+    async findAllPostsAndComments() {
+        const posts = await this.PostRepository.createQueryBuilder('post')
+            .leftJoinAndSelect('post.user', 'user')
+            .leftJoinAndSelect('post.comments', 'com')
+            .leftJoinAndSelect('com.user', 'u')
+            .orderBy('post.id', 'DESC')
+            .addOrderBy('com.order', 'ASC')
+            .getMany();
+            
+        return posts
     }
 
     async createPost(dto: CreatePostDto, user: UserEntity) {
